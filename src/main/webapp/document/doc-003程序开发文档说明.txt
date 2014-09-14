@@ -1,0 +1,24 @@
+1完成了ssh3+mysql+maven+jboss7 as搭建，并使用fremarker实现struts的试图显示。
+2后台采用easyui的来实现，这个easyui的模板时传智播客老师于洋的教学视频中附件的模板。
+3.访问后台首页地址http://localhost:8080/veight/admin/menu!index.action
+      登陆页面：http://localhost:8080/veight/admin/admin!login.action
+4.访问测试admin的Action，将输出22:33:41,659 INFO  [stdout] (http--127.0.0.1-8080-6) AdminAction说明成功部署，并且在mysql的test数据库中会有一个admin表
+
+5 20140527 23:49 完成了json方式修改并返回数据，返回的是对象，需要用eval函数转换一下
+
+6  修改保存歌手信息 遇到的问题之一 
+import org.springframework.beans.BeanUtils;
+
+//BeanUtils.copyProperties(persistent, artist, new String[]{"id","extraLargeImageUrl","name","albumCount","bioSummary","bioContent","gender","playCount","listeners","sortName","createDate","modifyDate"});
+BeanUtils.copyProperties(artist, persistent ,new String[]{"id","gender","playCount","listeners","sortName","createDate","modifyDate"});
+说明：这个方法第一参数是源对象，第二个参数是被赋值的对象，也就说是把第一个参数的值复制给第二个参数，第三个参数是表示过滤掉第一个参数中的属性，也就说不要把new String中指定的参数给复制过来。
+ 
+ 7 todo 添加歌手后台校验
+ 
+ 8  添加专辑了 
+ 
+ 9 添加歌曲了 
+ 
+ 10 todo 专辑中级联去歌手名字
+ 
+
