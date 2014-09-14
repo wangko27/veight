@@ -1,0 +1,46 @@
+@charset "utf-8";
+
+#captcha {
+	text-transform: uppercase;
+}
+.captchaImage {
+	float: left;
+	margin-left: 6px;
+}
+.captchaImage img {
+	margin-top:5px;
+	cursor: pointer;
+	height: 22px;
+}
+div.formTextS {
+	width: 76px;
+	height: 22px;
+	float: left;
+	padding: 3px;
+}
+div.formTextS input {
+	width: 70px;
+	height: 12px;
+	line-height: 12px;
+	padding: 5px 3px 5px 3px;
+	padding: 6px 3px 4px 3px\0;
+	background: none;
+}
+
+
+.input{
+	padding:5px;
+}
+.input table.inputTable {
+	border-top: 1px solid #e1e1e1;
+	border-left: 1px solid #e1e1e1;
+	border-right: 1px solid #e1e1e1;
+	width: 100%;
+}
+.input table.inputTable tr:hover th {
+	background-color: #eeeeee;
+}
+.input table.inputTable td {
+	padding: 5px 0px 5px 5px;
+	border-bottom: 1px solid #e1e1e1;
+}

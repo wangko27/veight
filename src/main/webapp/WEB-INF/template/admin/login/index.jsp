@@ -25,7 +25,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</head>
 	<body class="input">
 		<div id="win">
-			<form action="<%=basePath%>/login/loginVerify.action" method="post">
+			<form action="<%=basePath%>/admin/login/loginVerify.action" method="post">
 			<table table cellspacing="0" cellpadding="0" class="inputTable">
 	              <tr>
 	                  <td align="right">用户名:</td>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+           http://www.springframework.org/schema/security
+           http://www.springframework.org/schema/security/spring-security.xsd">
+	<!-- 静态资源文件css images js不要拦截 -->
+	<http pattern="/template/*" security="none"/>
+	<http pattern="/admin/login/index.xhtml" security="none"/>
+	<!-- 访问权限控制 -->
+	<http>
+	 	<intercept-url pattern="/admin/logout" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
+		<intercept-url pattern="/admin/song/**" access="ROLE_SONG"/>
+		<intercept-url pattern="/admin/document/**" access="ROLE_DOCUMENT"/>
+		<intercept-url pattern="/admin/member/**" access="ROLE_MEMBER"/>
+		<intercept-url pattern="/admin/**" access="ROLE_USER"/>
+		<form-login 
+		login-processing-url="/admin/login/loginVerify.action"
+		login-page="/admin/login/index.xhtml" 
+		authentication-failure-url="/admin/login/login.xhtml" 
+		default-target-url="/admin/menu/main.xhtml"/>
+		<access-denied-handler error-page="/denied"/>
+		<logout invalidate-session="true" 
+			logout-success-url="/admin/login/login.xhtml" 
+			logout-url="/admin/logout.xhtml"/>
+	</http>
+	<!-- 用户访问控制  认证 -->
+	<authentication-manager>
+		<authentication-provider>
+			<user-service>
+				<user name="jimi" password="123456" authorities="ROLE_USER,ROLE_ADMIN,ROLE_DOCUMENT,ROLE_SONG,ROLE_MEMBER" />
+				<user name="bob" password="123456" authorities="ROLE_USER,ROLE_SONG" />
+			</user-service>
+		</authentication-provider>
+	</authentication-manager>
+</beans:beans>

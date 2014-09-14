@@ -4,11 +4,41 @@
     <!-- spring配置文件位置  和 spring核心监听器-->
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>classpath*:applicationContext.xml</param-value>
+        <param-value>classpath*:applicationContext.xml,classpath*:applicationContext-security.xml</param-value>
     </context-param>
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
+    <!-- 登录验证码 配置 START -->
+    <!-- 验证码图片生成 -->
+    <filter>
+        <filter-name>jCaptchaFilter</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+        <init-param>
+            <param-name>targetFilterLifecycle</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>
+    <!-- 验证码图片 -->
+    <filter-mapping>
+        <filter-name>jCaptchaFilter</filter-name>
+        <url-pattern>/captcha.jpg</url-pattern>
+    </filter-mapping>
+    <!-- 管理员登录验证码校验 -->
+    <filter>
+        <filter-name>adminLoginJCaptchaFilter</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+        <init-param>
+            <param-name>targetFilterLifecycle</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>
+    <!-- 后台登录验证码表单处理URL.必须放在springSecurityFilter的filter-mapping之前 -->
+    <filter-mapping>
+        <filter-name>adminLoginJCaptchaFilter</filter-name>
+        <url-pattern>/admin/login/loginVerify.action</url-pattern>
+    </filter-mapping>
+    <!-- 登录验证码 配置 END -->
     <!-- 编码处理过滤器 -->
     <filter>
         <filter-name>encodingFilter</filter-name>
@@ -41,7 +71,15 @@
         <filter-name>openSessionInViewFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
-	
+    <!-- Spring Secutiry3.2.4的过滤器链配置  -->
+    <filter>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
     <!-- spring mvc servlet spring mvc 配置文件 -->
     <servlet>
         <servlet-name>springmvc</servlet-name>
@@ -59,6 +97,14 @@
     <servlet-mapping>
         <servlet-name>springmvc</servlet-name>
         <url-pattern>*.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>springmvc</servlet-name>
+        <url-pattern>*.action</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>springmvc</servlet-name>
+        <url-pattern>*.json</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>1000</session-timeout>

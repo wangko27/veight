@@ -1,0 +1,19 @@
+[
+		{ "id":"11", "pId":"0", "name":"音乐管理",  "click":false},
+		{ "id":"112", "pId":"11", "name":"歌曲管理",  "page":"song!list.action"},
+		{ "id":"113", "pId":"11", "name":"添加歌曲",  "page":"song!add.action"},
+		{ "id":"114", "pId":"11", "name":"专辑管理","page":"album!list.action"},
+		{ "id":"115", "pId":"11", "name":"分类管理", "page":"genre!list.action"},
+		{ "id":"116", "pId":"11", "name":"歌手管理","page":"artist!list.action"},
+		{ "id":"12", "pId":"0", "name":"受理","click":false },
+		{ "id":"121", "pId":"12", "name":"业务受理" ,"page":"page_qupai_noticebill_add.action"},
+		{ "id":"122", "pId":"12", "name":"工作单快速录入" ,"page":"page_qupai_quickworkorder.action"},
+		{ "id":"124", "pId":"12", "name":"工作单导入" ,"page":"page_qupai_workorderimport.action"},
+		{ "id":"13", "pId":"0", "name":"调度","click":false },
+		{ "id":"131", "pId":"13", "name":"查台转单","page":""},
+		{ "id":"132", "pId":"13", "name":"人工调度","page":"page_qupai_diaodu.action"},
+		{ "id":"14", "pId":"0" , "name":"中转配送流程管理","click":false },
+		{ "id":"141", "pId":"14", "name":"工作单审核" ,"page":"page_zhongzhuan_check.action"},
+		{ "id":"142", "pId":"14", "name":"查看个人任务" ,"page":"page_workflow_personaltask.action"},
+		{ "id":"143", "pId":"14", "name":"查看组任务","page":"page_workflow_grouptask.action"}
+]

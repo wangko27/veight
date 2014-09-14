@@ -1,0 +1,17 @@
+@charset "utf-8";
+.input{
+	padding:0px;
+}
+.input table.inputTable {
+	border-top: 1px solid #e1e1e1;
+	border-left: 1px solid #e1e1e1;
+	border-right: 1px solid #e1e1e1;
+	width: 100%;
+}
+.input table.inputTable tr:hover th {
+	background-color: #eeeeee;
+}
+.input table.inputTable td {
+	padding: 5px 0px 5px 5px;
+	border-bottom: 1px solid #e1e1e1;
+}

@@ -1,108 +1,107 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
-	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:tx="http://www.springframework.org/schema/tx"
-	xmlns:ehcache="http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring"
-	xsi:schemaLocation="
-    http://www.springframework.org/schema/beans
-    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
-    http://www.springframework.org/schema/context
-    http://www.springframework.org/schema/context/spring-context-3.0.xsd
-    http://www.springframework.org/schema/mvc
-    http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
-    http://www.springframework.org/schema/tx
-    http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
-    http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring
-    http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring/ehcache-spring-1.1.xsd">
-	<bean
-		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-		<property name="locations" value="classpath:/freemarker.properties" />
-	</bean>
-	<!-- 自动扫描controller包下的所有类，使其认为spring mvc的控制器 -->
-	<context:component-scan base-package="org.veight.admin.controller,org.veight.home.controller" />
-	<!-- 默认的注解映射的支持 -->
-	<mvc:annotation-driven />
-	<!-- 对静态资源文件的访问 -->
-	<mvc:resources mapping="/template/**" location="/template/" />
-	<!-- 避免IE执行AJAX时,返回JSON出现下载文件 -->
-	<bean id="mappingJacksonHttpMessageConverter"
-		class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">
-		<property name="supportedMediaTypes">
-			<list>
-				<value>application/json;charset=UTF-8</value>
-				<value>text/html;charset=UTF-8</value>
-			</list>
-		</property>
-	</bean>
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:ehcache="http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+        http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring
+        http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring/ehcache-spring-1.1.xsd">
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations" value="classpath:/freemarker.properties" />
+    </bean>
+    <!-- 自动扫描controller包下的所有类，使其认为spring mvc的控制器 -->
+    <context:component-scan base-package="org.veight.admin.controller,org.veight.home.controller" />
+    <!-- 默认的注解映射的支持 -->
+    <mvc:annotation-driven />
+    <!-- 对静态资源文件的访问 -->
+    <mvc:resources mapping="/template/**" location="/template/" />
+    <!-- 避免IE执行AJAX时,返回JSON出现下载文件 -->
+    <bean id="mappingJacksonHttpMessageConverter"
+          class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">
+        <property name="supportedMediaTypes">
+            <list>
+                <value>application/json;charset=UTF-8</value>
+                <value>text/html;charset=UTF-8</value>
+            </list>
+        </property>
+    </bean>
 	
-	<!-- 启动Spring MVC的注解功能，完成请求和注解POJO的映射 -->
-	<bean
-		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
-		<property name="messageConverters">
-			<list>
-				<ref bean="mappingJacksonHttpMessageConverter" />
-				<!-- json转换器 -->
-			</list>
-		</property>
-	</bean>
-	<!-- 自定义日志拦截器
-	<mvc:interceptors>
-		<mvc:interceptor>
-			<mvc:mapping path="/admin/**" />
-			<bean id="logInterceptor" class="org.veight.spring.mvc.interceptor.LogInterceptor" />
-		</mvc:interceptor>
-	</mvc:interceptors> -->
-	<!-- 针对freemarker的视图配置 -->
-	<bean id="viewResolver"
-		class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
-		<property name="order" value="3" />
-		<property name="suffix" value=".html" />
-		<property name="contentType" value="text/html;charset=UTF-8" />
-		<property name="exposeSpringMacroHelpers" value="true" />
-	</bean>
-	<bean id="freemarkerConfig"
-		class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
-		<property name="templateLoaderPath" value="/WEB-INF/template/"/>
-		<property name="freemarkerSettings">
-			<props>
-				<prop key="template_update_delay">${template_update_delay}</prop>
-				<prop key="default_encoding">${default_encoding}</prop>
-				<prop key="number_format">${number_format}</prop>
-				<prop key="datetime_format">${datetime_format}</prop>
-				<prop key="classic_compatible">${classic_compatible}</prop>
-				<prop key="template_exception_handler">ignore</prop>
-			</props>
-		</property>
-		<!-- 加入freemarker ${base} -->
-		<property name="freemarkerVariables">  
-	        <map>  
-	        	<!-- 配置上下文路径 -->
-	           <entry key="base" value="#{servletContext.contextPath}"/>            
-	        </map>  
-	    </property>  
-	</bean>
-	<!-- 对jsp视图配置 -->
-	<bean
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="order" value="4"></property>
-		<property name="prefix" value="/WEB-INF/template/"/>
-		<property name="suffix" value=".jsp" />
-		<property name="contentType" value="text/html;charset=utf-8" />
-	</bean>
-	<!-- 文件上传 -->
-	<bean id="multipartResolver"
-		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-		<property name="defaultEncoding">
-			<value>UTF-8</value>
-		</property>
-		<property name="maxUploadSize">
-			<value>32505856</value>
-			<!-- 上传文件大小限制为31M，31*1024*1024 -->
-		</property>
-		<property name="maxInMemorySize">
-			<value>4096</value>
-		</property>
-	</bean>
-	<!-- 系统错误转发配置[并记录错误日志]  默认为500，系统错误(error.jsp) -->
+    <!-- 启动Spring MVC的注解功能，完成请求和注解POJO的映射 -->
+    <bean
+        class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+        <property name="messageConverters">
+            <list>
+                <ref bean="mappingJacksonHttpMessageConverter" />
+                <!-- json转换器 -->
+            </list>
+        </property>
+    </bean>
+    <!-- 自定义日志拦截器-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/admin/**" />
+            <bean id="logInterceptor" class="org.veight.spring.mvc.interceptor.LogInterceptor" />
+        </mvc:interceptor>
+    </mvc:interceptors> 
+    <!-- 针对freemarker的视图配置 -->
+    <bean id="viewResolver"
+          class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+        <property name="order" value="3" />
+        <property name="suffix" value=".html" />
+        <property name="contentType" value="text/html;charset=UTF-8" />
+        <property name="exposeSpringMacroHelpers" value="true" />
+    </bean>
+    <bean id="freemarkerConfig"
+          class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+        <property name="templateLoaderPath" value="/WEB-INF/template/"/>
+        <property name="freemarkerSettings">
+            <props>
+                <prop key="template_update_delay">${template_update_delay}</prop>
+                <prop key="default_encoding">${default_encoding}</prop>
+                <prop key="number_format">${number_format}</prop>
+                <prop key="datetime_format">${datetime_format}</prop>
+                <prop key="classic_compatible">${classic_compatible}</prop>
+                <prop key="template_exception_handler">ignore</prop>
+            </props>
+        </property>
+        <!-- 加入freemarker ${base} -->
+        <property name="freemarkerVariables">  
+            <map>  
+                <!-- 配置上下文路径 -->
+                <entry key="base" value="#{servletContext.contextPath}"/>            
+            </map>  
+        </property>  
+    </bean>
+    <!-- 对jsp视图配置 -->
+    <bean
+        class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="order" value="4"></property>
+        <property name="prefix" value="/WEB-INF/template/"/>
+        <property name="suffix" value=".jsp" />
+        <property name="contentType" value="text/html;charset=utf-8" />
+    </bean>
+    <!-- 文件上传 -->
+    <bean id="multipartResolver"
+          class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="defaultEncoding">
+            <value>UTF-8</value>
+        </property>
+        <property name="maxUploadSize">
+            <value>32505856</value>
+            <!-- 上传文件大小限制为31M，31*1024*1024 -->
+        </property>
+        <property name="maxInMemorySize">
+            <value>4096</value>
+        </property>
+    </bean>
+    <!-- 系统错误转发配置[并记录错误日志]  默认为500，系统错误(error.jsp) -->
 </beans>
