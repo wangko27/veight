@@ -46,13 +46,13 @@
 			</list>
 		</property>
 	</bean>
-	<!-- 自定义日志拦截器 -->
+	<!-- 自定义日志拦截器
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/admin/**" />
 			<bean id="logInterceptor" class="org.veight.spring.mvc.interceptor.LogInterceptor" />
 		</mvc:interceptor>
-	</mvc:interceptors>
+	</mvc:interceptors> -->
 	<!-- 针对freemarker的视图配置 -->
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
@@ -105,9 +105,4 @@
 		</property>
 	</bean>
 	<!-- 系统错误转发配置[并记录错误日志]  默认为500，系统错误(error.jsp) -->
-	<!--<bean
-		class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
-		<property name="defaultErrorView" value="error"></property>
-	</bean>
-	-->
 </beans>

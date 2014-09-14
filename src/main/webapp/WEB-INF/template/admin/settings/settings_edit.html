@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>系统设置</title>
+<#include "common/include.html">
+<link rel="stylesheet" type="text/css" href="${base}/template/admin/css/settings.css" />
+</head>
+<body class="input">
+	<div class="easyui-panel" title="系统设置" border="0" style="padding:10px;">
+	<div class="easyui-tabs">
+        <div title="基本设置" style="padding:2px">
+        <form action="${base}/login/loginVerify" method="post">
+           <table cellspacing="0" cellpadding="0" class="inputTable">
+				<tr>
+					<td align="right" width="15%">
+						网站名称:
+					</td>
+					<td>
+						<input type="text" name="systemConfig.webName" class="formText {required: true}" value="${(systemConfig.webName)!}" />
+						<label class="requireField">*</label>
+					</td>
+				</tr>
+				<tr>
+					<td align="right">
+						网站网址:
+					</td>
+					<td>
+						<input type="text" name="systemConfig.webUrl" class="formText {required: true, url: true}" title="必须以http://开头" value="${(systemConfig.webUrl)!}" />
+						<label class="requireField">*</label>
+					</td>
+				</tr>
+				<tr>
+					<td align="right">
+						热门搜索关键词:
+					</td>
+					<td >
+						<input type="text" name="systemConfig.hotSearch" class="formText" value="${(systemConfig.hotSearch)!}" title="页面显示的热门搜索关键字,多个关键字请以,分隔" />
+					</td>
+				</tr>
+				<tr>
+					<td align="right">
+						联系地址:
+					</td>
+					<td>
+						<input type="text" name="systemConfig.address" class="formText" value="${(systemConfig.address)!}" />
+					</td>
+				</tr>
+				<tr>
+					<td align="right">
+						服务电话:
+					</td>
+					<td>
+						<input type="text" name="systemConfig.phone" class="formText {phone: true}" value="${(systemConfig.phone)!}" />
+					</td>
+				</tr>
+				<tr>
+					<td align="right">
+						邮编:
+					</td>
+					<td>
+						<input type="text" name="systemConfig.zipCode" class="formText {zipCode: true}" value="${(systemConfig.zipCode)!}" />
+					</td>
+				</tr>
+				<tr>
+					<td align="right">
+						E-mail:
+					</td>
+					<td>
+						<input type="text" name="systemConfig.email" class="formText {email: true}" value="${(systemConfig.email)!}" />
+					</td>
+				</tr>
+				<tr>
+					<td align="right">
+						备案号:
+					</td>
+					<td>
+						<input type="text" name="systemConfig.certtext" class="formText" value="${(systemConfig.certtext)!}" title="填写您在工信部备案管理网站申请的备案编号" />
+					</td>
+				</tr>
+				<tr>
+					<td align="right">
+						首页页面关键词:
+					</td>
+					<td>
+						<input type="text" name="systemConfig.metaKeywords" class="formText" value="${(systemConfig.metaKeywords)!}" title="多个关键字请以(,)分隔" />
+					</td>
+				</tr>
+				<tr>
+					<td align="right">
+						首页页面描述:
+					</td>
+					<td>
+						<textarea name="systemConfig.metaDescription" rows="5" cols="50" class="formTextarea">${(systemConfig.metaDescription)!}</textarea>
+					</td>
+				</tr>
+				 <tr>
+	                  <td align="right">
+	                  	<input type="submit" class="easyui-linkbutton" value="保存"/>
+	                  </td>
+	                  <td>
+	                    <input type="reset" class="easyui-linkbutton" value="取消"/>
+	                 </td>
+	              </tr>
+			</table>
+			</form> 
+        </div>
+        <div title="显示设置" style="padding:10px">
+          <table class="inputTable" cellspacing="0" cellpadding="0">
+            <tr>
+				<td align="right" width="15%">
+					系统图片（大）:
+				</th>
+				<td>
+					<span class="fieldTitle">宽度:</span>
+					<input type="text" name="systemConfig.bigImageWidth" class="formText {required: true, digits: true}" value="${(systemConfig.bigImageWidth)!}" style="width: 50px;" title="单位:像素, 只允许输入零或正整数" />
+					<label class="requireField">*</label>
+					<span class="fieldTitle">高度:</span>
+					<input type="text" name="systemConfig.bigImageHeight" class="formText {required: true, digits: true}" value="${(systemConfig.bigImageHeight)!}" style="width: 50px;" title="单位:像素, 只允许输入零或正整数" />
+					<label class="requireField">*</label>
+				</td>
+			</tr>
+			<tr>
+				<td align="right">
+					系统图片（小）:
+				</th>
+				<td>
+					<span class="fieldTitle">宽度:</span>
+					<input type="text" name="systemConfig.smallImageWidth" class="formText {required: true, digits: true}" value="${(systemConfig.smallImageWidth)!}" style="width: 50px;" title="单位:像素, 只允许输入零或正整数" />
+					<label class="requireField">*</label>
+					<span class="fieldTitle">高度:</span>
+					<input type="text" name="systemConfig.smallImageHeight" class="formText {required: true, digits: true}" value="${(systemConfig.smallImageHeight)!}" style="width: 50px;" title="单位:像素, 只允许输入零或正整数" />
+					<label class="requireField">*</label>
+				</td>
+			</tr>
+			<tr>
+				<td align="right">
+					系统缩略图:
+				</th>
+				<td>
+					<span class="fieldTitle">宽度:</span>
+					<input type="text" name="systemConfig.thumbnailImageWidth" class="formText {required: true, digits: true}" value="${(systemConfig.thumbnailImageWidth)!}" style="width: 50px;" title="单位:像素, 只允许输入零或正整数" />
+					<label class="requireField">*</label>
+					<span class="fieldTitle">高度:</span>
+					<input type="text" name="systemConfig.thumbnailImageHeight" class="formText {required: true, digits: true}" value="${(systemConfig.thumbnailImageHeight)!}" style="width: 50px;" title="单位:像素, 只允许输入零或正整数" />
+					<label class="requireField">*</label>
+				</td>
+			</tr>
+			<tr>
+				<td align="right">
+					默认系统图片（大）:
+				</th>
+				<td>
+					<input type="file" name="defaultBigImage" />&nbsp;&nbsp;&nbsp;&nbsp;<a href="${base}${(systemConfig.defaultBigImagePath)!}" class="imagePreview" target="_blank">查看</a>
+				</td>
+			</tr>
+			<tr>
+				<td align="right">
+					默认系统图片（小）:
+				</th>
+				<td>
+					<input type="file" name="defaultSmallImage" />&nbsp;&nbsp;&nbsp;&nbsp;<a href="${base}${(systemConfig.defaultSmallImagePath)!}" class="imagePreview" target="_blank">查看</a>
+				</td>
+			</tr>
+			<tr>
+				<td align="right">
+					默认缩略图:
+				</th>
+				<td>
+					<input type="file" name="defaultThumbnailImage" />&nbsp;&nbsp;&nbsp;&nbsp;<a href="${base}${(systemConfig.defaultThumbnailImagePath)!}" class="imagePreview" target="_blank">查看</a>
+				</td>
+			</tr>
+			<tr>
+				<td align="right">
+					水印图片:
+				</th>
+				<td>
+					<input type="file" name="watermarkImage" />&nbsp;&nbsp;&nbsp;&nbsp;<a href="${base}${(systemConfig.watermarkImagePath)!}" class="imagePreview" target="_blank">查看</a>
+				</td>
+			</tr>
+			<tr>
+				<td align="right">
+					水印位置:
+				</th>
+				<td>
+					<#list allWatermarkPosition as list>
+						<label><input type="radio" name="systemConfig.watermarkPosition" value="${list}" <#if (systemConfig.watermarkPosition == list)!> checked="true"</#if> />${action.getText("WatermarkPosition." + list)}&nbsp;</label>
+					</#list>
+				</td>
+			</tr>
+			<tr>
+				<td align="right">
+					水印透明度:
+				</th>
+				<td>
+					<input type="text" name="systemConfig.watermarkAlpha" class="formText {required: true, digits: true}" value="${(systemConfig.watermarkAlpha)!}" title="取值范围:0-100,  0代表完全透明" />
+					<label class="requireField">*</label>
+				</td>
+			</tr>
+			 <tr>
+                  <td align="right">
+                  	<input type="submit" class="easyui-linkbutton" value="保存"/>
+                  </td>
+                  <td>
+                    <input type="reset" class="easyui-linkbutton" value="取消"/>
+                 </td>
+	        </tr>
+		</table>
+        </div>
+        <div title="安全设置" style="padding:10px">
+            <table class="inputTable" cellspacing="0" cellpadding="0">
+				<tr>
+					<td align="right" width="15%">
+						是否开放注册:
+					</th>
+					<td>
+						<label><input type="radio" name="systemConfig.isRegister" value="true" <#if systemConfig.isRegister == true> checked</#if> />是</label>
+						<label><input type="radio" name="systemConfig.isRegister" value="false" <#if systemConfig.isRegister == false> checked</#if> />否</label>
+					</td>
+				</tr>
+				<tr>
+					<td align="right">
+						是否自动锁定账号:
+					</th>
+					<td>
+						<label><input type="radio" name="systemConfig.isLoginFailureLock" value="true" <#if systemConfig.isLoginFailureLock == true> checked</#if> />是</label>
+						<label><input type="radio" name="systemConfig.isLoginFailureLock" value="false" <#if systemConfig.isLoginFailureLock == false> checked</#if> />否</label>
+					</td>
+				</tr>
+				<tr id="loginFailureLockCountTr" <#if systemConfig.isLoginFailureLock == false> class="hidden"</#if>>
+					<td align="right">
+						连续登录失败最大次数:
+					</th>
+					<td>
+						<input type="text" name="systemConfig.loginFailureLockCount" class="formText {required: true, positiveInteger: true}" value="${(systemConfig.loginFailureLockCount)!}" title="只允许输入正整数,当连续登录失败次数超过设定值时,系统将自动锁定该账号" />
+						<label class="requireField">*</label>
+					</td>
+				</tr>
+				<tr id="loginFailureLockTimeTr"<#if systemConfig.isLoginFailureLock == false> class="hidden"</#if>>
+					<td align="right">
+						自动解锁时间:
+					</th>
+					<td>
+						<input type="text" name="systemConfig.loginFailureLockTime" class="formText {required: true, digits: true}" value="${(systemConfig.loginFailureLockTime)!}" title="只允许输入零或正整数,账号锁定后,自动解除锁定的时间,单位:分钟,0表示永久锁定" />
+						<label class="requireField">*</label>
+					</td>
+				</tr>
+				<tr>
+					<td align="right">
+						允许上传图片文件扩展名:
+					</th>
+					<td>
+						<input type="text" name="systemConfig.allowedUploadImageExtension" class="formText" value="${(systemConfig.allowedUploadImageExtension)!}" title="为空表示不允许上传图片文件,多个扩展名请以,分隔" />
+					</td>
+				</tr>
+				<tr>
+					<td align="right">
+						允许上传媒体文件扩展名:
+					</th>
+					<td>
+						<input type="text" name="systemConfig.allowedUploadMediaExtension" class="formText" value="${(systemConfig.allowedUploadMediaExtension)!}" title="为空表示不允许上传媒体文件,多个扩展名请以,分隔" />
+					</td>
+				</tr>
+				<tr>
+					<td align="right">
+						允许上传其它文件扩展名:
+					</th>
+					<td>
+						<input type="text" name="systemConfig.allowedUploadFileExtension" class="formText" value="${(systemConfig.allowedUploadFileExtension)!}" title="为空表示不允许上传其它文件,多个扩展名请以,分隔" />
+					</td>
+				</tr>
+				<tr>
+					<td align="right">
+						文件上传最大值:
+					</th>
+					<td>
+						<select name="systemConfig.uploadLimit">
+							<option value="512" <#if systemConfig.uploadLimit == 512>selected="selected" </#if>>
+								512K
+							</option>
+							<option value="1024" <#if systemConfig.uploadLimit == 1024>selected="selected" </#if>>
+								1M
+							</option>
+							<option value="2048" <#if systemConfig.uploadLimit == 2048>selected="selected" </#if>>
+								2M
+							</option>
+							<option value="3072" <#if systemConfig.uploadLimit == 3072>selected="selected" </#if>>
+								3M
+							</option>
+							<option value="5120" <#if systemConfig.uploadLimit == 5120>selected="selected" </#if>>
+								5M
+							</option>
+							<option value="0" <#if systemConfig.uploadLimit == 0>selected="selected" </#if>>
+								无限制
+							</option>
+						</select>
+						<label class="requireField">*</label>
+					</td>
+				</tr>
+				 <tr>
+	                  <td align="right">
+	                  	<input type="submit" class="easyui-linkbutton" value="保存"/>
+	                  </td>
+	                  <td>
+	                    <input type="reset" class="easyui-linkbutton" value="取消"/>
+	                 </td>
+	              </tr>
+			</table>
+        </div><!-- 安全设置结束 -->
+      
+    </div>
+	</div>
+</body>
+<script type="text/javascript">
+	// 工具栏
+	$(document).ready(function() {
+		$(".inputTable tr td").mouseover(function() {
+			$(this).parent().find("td").css("background-color", "#d5f4fe");
+		});
+	})
+	/* 当鼠标在表格上移动时，离开的那一行背景恢复 */
+	$(document).ready(function() {
+		$(".inputTable tr td").mouseout(function() {
+			var bgc = $(this).parent().attr("bg");
+			$(this).parent().find("td").css("background-color", bgc);
+		});
+	})
+
+	$(document).ready(function() {
+		var color = "#f8f8f8"
+		$(".inputTable tr:odd td").css("background-color", color); //改变偶数行背景色
+			/* 把背景色保存到属性中 */
+			$(".inputTable tr:odd").attr("bg", color);
+			$(".inputTable tr:even").attr("bg", "#fff");
+	})
+</script>
+</html>

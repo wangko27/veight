@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>添加歌曲分类</title>
+<#include "common/include.html">
+<link rel="stylesheet" type="text/css" href="${base}/template/admin/css/input.css"/>
+<script type="text/javascript" src="${base}/template/common/js/ajaxupload.js"></script>
+<script type="text/javascript">
+	// 工具栏
+	  $(document).ready(function(){
+            $(".inputTable tr td").mouseover(function(){
+                $(this).parent().find("td").css("background-color","#d5f4fe");
+            });
+      })
+      /* 当鼠标在表格上移动时，离开的那一行背景恢复 */
+      $(document).ready(function(){ 
+            $(".inputTable tr td").mouseout(function(){
+                var bgc = $(this).parent().attr("bg");
+                $(this).parent().find("td").css("background-color",bgc);
+            });
+      })
+      
+      $(document).ready(function(){ 
+            var color="#f8f8f8"
+            $(".inputTable tr:odd td").css("background-color",color);  //改变偶数行背景色
+            /* 把背景色保存到属性中 */
+            $(".inputTable tr:odd").attr("bg",color);
+            $(".inputTable tr:even").attr("bg","#fff");
+      })
+   
+</script>		
+</head>
+<body class="input">
+    <div class="easyui-panel" title="添加歌曲分类" style="padding:10px;">
+        <form action="${base}/admin/genre/save.action" method="post">
+            <table table cellspacing="0" cellpadding="0" class="inputTable">
+                <tr>
+                    <td align="right">分类名:</td>
+                    <td><input class="easyui-validatebox" type="text" required="required" name="name"></input></td>
+                </tr>
+                 <tr>
+                    <td align="right">分类简要描述:</td>
+                     <td>
+                    	<textarea style="overflow:auto;height:100%;" rows="5" cols="50" name="description">输入分类简要描述</textarea> 
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right">
+                    	<input type="submit" class="easyui-linkbutton" value="保存"/>
+                    </td>
+                    <td>
+                      	<input type="reset" class="easyui-linkbutton" value="取消"/>
+                   </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html>

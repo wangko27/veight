@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en" class="app">
+<head>  
+  <meta charset="utf-8" />
+  <title>播放器-分享自由-v8音乐</title>
+  <meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <#include "home/home-include-css.html">
+<style type="text/css">
+*{ margin:0; padding:0; }
+ul, ol, dl { list-style:none; }
+.content li.hover{color:red; }
+.content{overflow:hidden;padding:10px; font-size:14px;}
+</style>
+</head>
+<body>
+<!--textarea只是用来存储歌词信息 并不做显示，如果要修改显示样式，修改id="lrc_list"的样式就行-->
+<textarea id="lrc_content" style="display:none;">
+[ti:曹操]
+[ar:林俊杰]
+[al:曹操]
+[00:00.03]林俊杰-《曹操》
+[00:13.35]作词：林秋离
+[00:20.12]作曲：林俊杰
+[00:25.32]
+[01:33.46][00:26.82]不是英雄 不读三国
+[01:40.12][00:33.43]若是英雄 怎么能不懂寂寞
+[02:39.68][01:46.34][00:39.63]独自走下长坂坡 月光太温柔
+[02:43.20][01:49.82][00:43.15]曹操不啰嗦 一心要那荆州
+[02:46.75][01:53.48][00:46.83]用阴谋 阳谋 明说 暗夺的摸
+[02:53.44][02:00.10][00:53.50]东汉末年分三国
+[02:56.37][02:03.15][00:56.52]烽火连天不休
+[03:00.12][02:06.75][01:00.17]儿女情长 被乱世左右
+[03:05.04][02:11.71][01:05.12]谁来煮酒
+[03:06.78][02:13.45][01:06.84]尔虞我诈是三国
+[03:09.85][02:16.43][01:09.73]说不清对与错
+[03:13.38][02:20.11][01:13.48]纷纷扰扰 千百年以後
+[03:18.44][02:25.06][01:18.45]一切又从头
+[03:25.99][02:30.17][01:26.81]喔……
+[88:88:88]
+</textarea>
+   <!-- 头部 -->
+  <#include "home/header.html">
+  <!-- //END头部 -->
+      <section class="hbox stretch">
+       <!-- .aside 左侧菜单-->
+      <#include "home/left.html">
+        <!-- //END.aside 左侧菜单-->
+        <section id="content">
+          <section class="vbox">
+            <section class="scrollable">
+              <section class="hbox stretch">
+                <aside class="aside-lg bg-light lter b-r">
+                  <section class="vbox">
+                    <section class="scrollable">
+                      <div class="wrapper">
+                        <div class="text-center m-b m-t">
+                          <a href="#" class="thumb-lg">
+                            <img src="${base}/template/home/images/a0.png" class="img-circle">
+                          </a>
+                          <div>
+                            <div class="h4 m-t-xs m-b-xs">一名清官</div>
+                            <small class="text-muted"><i class="fa fa-map-marker"></i> 台湾, 中国</small>
+                          </div>                
+                        </div>
+                    
+                        <div class="btn-group btn-group-justified m-b">
+                          <a class="btn btn-success btn-rounded" data-toggle="button">
+                            <span class="text h6">
+                              <i class="fa fa-eye"></i> 关注
+                            </span>
+                            <span class="text-active">
+                              <i class="fa fa-eye"></i>
+                            </span>
+                          </a>
+                          <a class="btn btn-dark btn-rounded">
+							<span class="text h6">
+								<i class="fa fa-info-circle"></i>详情
+							 </span>
+                          </a>
+                        </div>
+                        <div>
+                          <small class="text-uc text-xs text-muted">播放次数:</small>
+                          <span class="text h6">30124</span></br>
+						   <small class="text-uc text-xs text-muted">评论数:</small>
+                          <span class="text h6">324</span></br>
+                          <small class="text-uc text-xs text-muted">简介</small>
+                          <span class="text h6">虽然Pages和Keynote拥有非常精致的造型和拟真效果，但是就icon设计而言，Numbers要超过它们。 Numbers脱胎于现实中的物体但又不是完全模拟它们，形象更简洁有力.</span>
+                          <div class="line"></div>
+                          <small class="text-uc text-xs text-muted">已认证</small>
+                          <p class="m-t-sm">
+                            <a href="#" class="btn btn-rounded btn-twitter btn-icon"><i class="fa fa-weibo"></i></a>
+                            <a href="#" class="btn btn-rounded btn-facebook btn-icon"><i class="fa fa-renren"></i></a>
+							<a href="#" class="btn btn-rounded btn-facebook btn-icon"><i class="fa fa-linux"></i></a>
+                            <a href="#" class="btn btn-rounded btn-gplus btn-icon"><i class="fa fa-google-plus"></i></a>
+                          </p>
+                        </div>
+                      </div>
+                    </section>
+                  </section>
+                </aside>
+				<!--歌词显示-->
+                <aside class="b-1">
+                  <section class="vbox">
+					<section class="scrollable padder-v">
+						 <div class="content text-center">
+							<ul id="lrc_list">
+								加载歌词……
+							</ul>
+					  </div>
+					</section>
+                  </section>
+                </aside>
+				<!---// 歌曲评论开始-->
+                <aside class="col-lg-3 b-l">
+                  <section class="vbox">
+                    <section class="scrollable">
+						  <h5 class="font-bold">最新评论</h5>
+						  <div>
+							<article class="media">
+							  <a href="#" class="pull-left thumb thumb-wrapper m-t-xs">
+								<img src="${base}/template/home/images/m1.jpg">
+							  </a>
+							  <div class="media-body">                        
+								<a href="#" class="font-semibold">Bootstrap 3: What you need to know</a>
+								<div class="text-xs block m-t-xs"><a href="#">Travel</a> 2 minutes ago</div>
+							  </div>
+							</article>
+							<div class="line"></div>
+							<article class="media m-t-none">
+							  <a class="pull-left thumb thumb-wrapper m-t-xs">
+								<img src="${base}/template/home/images/m2.jpg">
+							  </a>
+							  <div class="media-body">                        
+								<a href="#" class="font-semibold">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a>
+								<div class="text-xs block m-t-xs"><a href="#">Design</a> 2 hours ago</div>
+							  </div>
+							</article>
+							<div class="line"></div>
+							<article class="media m-t-none">
+							  <a class="pull-left thumb thumb-wrapper m-t-xs">
+								<img src="${base}/template/home/images/m3.jpg">
+							  </a>
+							  <div class="media-body">                        
+								<a href="#" class="font-semibold">Sed diam nonummy nibh euismod tincidunt ut laoreet</a>
+								<div class="text-xs block m-t-xs"><a href="#">MFC</a> 1 week ago</div>
+							  </div>
+							</article>
+							
+							<article class="media">
+							  <a class="pull-left thumb thumb-wrapper m-t-xs">
+								<img src="${base}/template/home/images/m1.jpg">
+							  </a>
+							  <div class="media-body">                        
+								<a href="#" class="font-semibold">Bootstrap 3: What you need to know</a>
+								<div class="text-xs block m-t-xs"><a href="#">Travel</a> 2 minutes ago</div>
+							  </div>
+							</article>
+							<div class="line"></div>
+							<article class="media m-t-none">
+							  <a class="pull-left thumb thumb-wrapper m-t-xs">
+								<img src="${base}/template/home/images/m2.jpg">
+							  </a>
+							  <div class="media-body">                        
+								<a href="#" class="font-semibold">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a>
+								<div class="text-xs block m-t-xs"><a href="#">Design</a> 2 hours ago</div>
+							  </div>
+							</article>
+							<div class="line"></div>
+							<article class="media m-t-none">
+							  <a class="pull-left thumb thumb-wrapper m-t-xs">
+								<img src="${base}/template/home/images/m3.jpg">
+							  </a>
+							  <div class="media-body">                        
+								<a href="#" class="font-semibold">Sed diam nonummy nibh euismod tincidunt ut laoreet</a>
+								<div class="text-xs block m-t-xs"><a href="#">MFC</a> 1 week ago</div>
+							  </div>
+							</article>
+							
+							<article class="media">
+							  <a class="pull-left thumb thumb-wrapper m-t-xs">
+								<img src="${base}/template/home/images/m1.jpg">
+							  </a>
+							  <div class="media-body">                        
+								<a href="#" class="font-semibold">Bootstrap 3: What you need to know</a>
+								<div class="text-xs block m-t-xs"><a href="#">Travel</a> 2 minutes ago</div>
+							  </div>
+							</article>
+							<div class="line"></div>
+							<article class="media m-t-none">
+							  <a class="pull-left thumb thumb-wrapper m-t-xs">
+								<img src="${base}/template/home/images/m2.jpg">
+							  </a>
+							  <div class="media-body">                        
+								<a href="#" class="font-semibold">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a>
+								<div class="text-xs block m-t-xs"><a href="#">Design</a> 2 hours ago</div>
+							  </div>
+							</article>
+							<div class="line"></div>
+							<article class="media m-t-none">
+							  <a class="pull-left thumb thumb-wrapper m-t-xs">
+								<img src="${base}/template/home/images/m3.jpg">
+							  </a>
+							  <div class="media-body">                        
+								<a href="#" class="font-semibold">Sed diam nonummy nibh euismod tincidunt ut laoreet</a>
+								<div class="text-xs block m-t-xs"><a href="#">MFC</a> 1 week ago</div>
+							  </div>
+							</article>
+						  </div>
+                    </section>
+                  </section>              
+                </aside>
+				<!---//END 歌曲评论结束-->
+              </section>
+            </section>
+			 <footer class="footer bg-info dker">
+              <div id="jp_container_N">
+                    <div class="jp-type-playlist">
+                      <div id="jplayer_N" class="jp-jplayer hide"></div>
+                      <div class="jp-gui">
+                        <div class="jp-video-play hide">
+                          <a class="jp-video-play-icon">play</a>
+                        </div>
+                        <div class="jp-interface">
+                          <div class="jp-controls">
+                            <div><a class="jp-previous"><i class="icon-control-rewind i-lg"></i></a></div>
+                            <div>
+                              <a class="jp-play"><i class="icon-control-play i-2x"></i></a>
+                              <a class="jp-pause hid"><i class="icon-control-pause i-2x"></i></a>
+                            </div>
+                            <div><a class="jp-next"><i class="icon-control-forward i-lg"></i></a></div>
+                            <div class="hide"><a class="jp-stop"><i class="fa fa-stop"></i></a></div>
+                            <div><a class="" data-toggle="dropdown" data-target="#playlist"><i class="icon-list"></i></a></div>
+                            <div class="jp-progress hidden-xs">
+                              <div class="jp-seek-bar dk">
+                                <div class="jp-play-bar bg-info">
+                                </div>
+                                <div class="jp-title text-lt">
+                                  <ul>
+                                    <li></li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="hidden-xs hidden-sm jp-current-time text-xs text-muted"></div>
+                            <div class="hidden-xs hidden-sm jp-duration text-xs text-muted"></div>
+                            <div class="hidden-xs hidden-sm">
+                              <a class="jp-mute" title="mute"><i class="icon-volume-2"></i></a>
+                              <a class="jp-unmute hid" title="unmute"><i class="icon-volume-off"></i></a>
+                            </div>
+                            <div class="hidden-xs hidden-sm jp-volume">
+                              <div class="jp-volume-bar dk">
+                                <div class="jp-volume-bar-value lter"></div>
+                              </div>
+                            </div>
+                            <div>
+                              <a class="jp-shuffle" title="shuffle"><i class="icon-shuffle text-muted"></i></a>
+                              <a class="jp-shuffle-off hid" title="shuffle off"><i class="icon-shuffle text-lt"></i></a>
+                            </div>
+                            <div>
+                              <a class="jp-repeat" title="repeat"><i class="icon-loop text-muted"></i></a>
+                              <a class="jp-repeat-off hid" title="repeat off"><i class="icon-loop text-lt"></i></a>
+                            </div>
+                            <div class="hide">
+                              <a class="jp-full-screen" title="full screen"><i class="fa fa-expand"></i></a>
+                              <a class="jp-restore-screen" title="restore screen"><i class="fa fa-compress text-lt"></i></a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="jp-playlist dropup" id="playlist">
+                        <ul class="dropdown-menu aside-xl dker">
+                          <!-- The method Playlist.displayPlaylist() uses this unordered list -->
+                          <li class="list-group-item"></li>
+                        </ul>
+                      </div>
+                      <div class="jp-no-solution hide">
+                        <span>Update Required</span>
+                        To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
+                      </div>
+                    </div>
+                  </div>
+            </footer>
+          </section>
+          <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open" data-target="#nav,html"></a>
+        </section>
+      </section>
+    </section>    
+  </section>
+  <#include "home/home-include-js.html">
+  <script type="text/javascript" src="${base}/template/home/js/jPlayer/jquery.jplayer.min.js"></script>
+  <script type="text/javascript" src="${base}/template/home/js/jPlayer/add-on/jplayer.playlist.min.js"></script>
+  <script type="text/javascript" src="${base}/template/home/js/jPlayer/jquery.jplayer.lyric.js"></script>
+  <script type="text/javascript" src="${base}/template/home/js/jPlayer/demo.js"></script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>歌曲分类管理</title>
+<#include "common/include.html">	
+<script type="text/javascript" src="${base}/template/admin/js/easyui/ext/datagrid-detailview.js"></script>	
+</head>
+<body>
+	<div class="easyui-panel" border="false" style="padding:10px;">
+		<div id="v_toolbar">  
+		    <a href="${base}/admin/genre/add.xhtml" class="easyui-linkbutton" iconCls="icon-add" plain="true">添加</a>
+		     <a href="genre!add.action" class="easyui-linkbutton" iconCls="icon-save" plain="true">保存</a>    
+		    <a href="javascript:void(0);" onclick="doDelete()" class="easyui-linkbutton" iconCls="icon-remove" plain="true">删除</a>  
+		    <a href="genre!list.action" class="easyui-linkbutton" iconCls="icon-search" plain="true">刷新</a>  
+		</div> 
+		<form id="gridForm" method="post">
+		 <table id="grid" title="歌曲分类列表">
+		 </table>
+		</form>
+	</div>
+</body>
+<script type="text/javascript"> 
+	$(document).ready(function(){
+		// 定义标题栏
+		var columns = [ [ {
+			field : 'id',
+			checkbox : true,
+			rowspan : 2
+		},{
+			field : 'name',
+			title : '文件名',
+			width : 180,
+			rowspan : 2
+		},{
+			field : 'type',
+			title : '类型',
+			width : 180,
+			rowspan : 2,
+			align : 'center'
+		}, {
+			field : 'size',
+			title : '大小',
+			width : 150,
+			rowspan : 2,
+			align : 'center'
+		}, {
+			field : 'createDate',
+			title : '创建时间',
+			width : 180,
+			align : 'center'
+		} ] ];
+		$('#grid').datagrid({
+			iconCls : 'icon-forward',
+			rownumbers : true,
+			height:($(window).height()-20),
+			toolbar : '#v_toolbar',
+			url : "${base}/admin/document/listFiles.json?directory=${directory}",
+			idField : 'id', 
+			columns : columns
+		});
+	}) ;//Jquery END
+</script>
+</html>

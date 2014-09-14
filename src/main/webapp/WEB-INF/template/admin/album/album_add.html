@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>添加专辑</title>
+<#include "common/include.html">
+<link rel="stylesheet" type="text/css" href="${base}/template/admin/css/input.css"/>
+<script type="text/javascript" src="${base}/template/common/js/ajaxupload.js"></script>
+<script type="text/javascript">
+	// 工具栏
+	  $(document).ready(function(){
+            $(".inputTable tr td").mouseover(function(){
+                $(this).parent().find("td").css("background-color","#d5f4fe");
+            });
+      })
+      /* 当鼠标在表格上移动时，离开的那一行背景恢复 */
+      $(document).ready(function(){ 
+            $(".inputTable tr td").mouseout(function(){
+                var bgc = $(this).parent().attr("bg");
+                $(this).parent().find("td").css("background-color",bgc);
+            });
+      })
+      
+      $(document).ready(function(){ 
+            var color="#f8f8f8"
+            $(".inputTable tr:odd td").css("background-color",color);  //改变偶数行背景色
+            /* 把背景色保存到属性中 */
+            $(".inputTable tr:odd").attr("bg",color);
+            $(".inputTable tr:even").attr("bg","#fff");
+      })
+</script>		
+</head>
+<body class="input">
+    <div class="easyui-panel" title="添加专辑" style="padding:10px;">
+        <form action="${base}/admin/album/save.xhtml" method="post">
+            <table table cellspacing="0" cellpadding="0" class="inputTable">
+                <tr>
+                    <td align="right">专辑名:</td>
+                    <td><input class="easyui-validatebox" type="text" name="name" required="required"></input></td>
+                </tr>
+                <tr>
+                    <td align="right">歌手名:</td>
+                    <td>
+ 					<select class="easyui-combobox" name="artistId" style="width:80px;">
+				        <#list artistListAll as list>
+				         	<option value="${list.id}">${list.name}</option>
+				        </#list>
+				     </select>  
+ 					</td>
+                </tr>
+                 <tr>
+                    <td align="right">发行年份:</td>
+                    <td>
+                     <input class="easyui-validatebox" type="text" name="year"></input>
+				    </td>
+                </tr>
+                 <tr>
+                    <td align="right">曲风:</td>
+                    <td><input class="easyui-validatebox" type="text" name="genre" required="required" style="width:80px;"></input></td>
+                </tr>
+                <tr>
+                    <td align="right">
+                    	<input type="submit" class="easyui-linkbutton" value="保存"/>
+                    </td>
+                    <td>
+                      	<input type="reset" class="easyui-linkbutton" value="取消"/>
+                   </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html>

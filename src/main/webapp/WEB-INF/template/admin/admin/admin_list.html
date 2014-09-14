@@ -1,0 +1,182 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>管理员管理</title>
+<#include "common/include.html">	
+<script type="text/javascript" src="${base}/template/admin/js/easyui/ext/datagrid-detailview.js"></script>	
+</head>
+<body>
+	<div class="easyui-panel" border="false" style="padding:10px;">
+		<div id="v_toolbar">  
+		    <a href="${base}/admin/admin/add.xhtml" class="easyui-linkbutton" iconCls="icon-add" plain="true">添加</a>
+		    <a href="javascript:void(0);" onclick="doDelete()" class="easyui-linkbutton" iconCls="icon-remove" plain="true">删除</a>  
+		    <a href="javascript:void(0);" onclick="doReload()" class="easyui-linkbutton" iconCls="icon-search" plain="true">刷新</a>  
+		</div> 
+		<form id="gridForm" method="post">
+		 <table id="grid" title="管理员列表">
+		 </table>
+		</form>
+	</div>
+	<!-- 修改窗口 -->
+	<div class="easyui-window" title="管理员信息" id="editGenreWindow" collapsible="false" minimizable="false" maximizable="false" data-options="iconCls:'icon-save'" style="top:50px;left:200px;padding:5px;">
+		 <div class="easyui-layout" data-options="fit:true">
+            <div data-options="region:'center'">
+                <form id="EditForm" action="${base}/admin/genre/update.action" method="post">
+				<table class="table-edit" width="100%" align="center">
+					<tr class="title">
+						<td colspan="2">分类信息</td>
+					</tr>
+					<input type="hidden" name="id" id="genreId"/>
+					 <tr>
+	                    <td align="right" width="20%">分类名:</td>
+	                    <td><input class="easyui-validatebox" id="genreName" type="text" required="required" name="name"></input></td>
+	                 </tr>
+	                 <tr>
+	                    <td align="right">描述:</td>
+	                     <td>
+	                    	<textarea style="overflow:auto;height:100%;"id="genreDescription"  rows="5" cols="40" name="description">输入分类简要描述</textarea> 
+	                    </td>
+	                </tr>
+					</table>
+				</form>
+            </div>
+            <div data-options="region:'south',border:false" style="text-align:right;padding:5px 0 0;">
+                <a class="easyui-linkbutton" data-options="iconCls:'icon-ok'" href="javascript:void(0)" onclick="javascript:alert('ok')" style="width:80px">保存</a>
+                <a class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" href="javascript:void(0)" onclick="javascript:alert('cancel')" style="width:80px">取消</a>
+            </div>
+        </div>
+	</div>
+</body>
+<script type="text/javascript"> 
+	$(document).ready(function(){
+		// 定义标题栏
+		var columns = [ [ {
+			field : 'id',
+			checkbox : true,
+			rowspan : 2
+		},{
+			field : 'username',
+			title : '用户名',
+			width : 80,
+			rowspan : 2
+		},{
+			field : 'email',
+			title : '电子邮件',
+			width : 150,
+			rowspan : 2,
+			align : 'center'
+		}, {
+			field : 'name',
+			title : '姓名',
+			width : 120,
+			rowspan : 2,
+			align : 'center'
+		}, {
+			field : 'department',
+			title : '部门',
+			width : 120,
+			rowspan : 2,
+			align : 'center'
+		}, {
+			field : 'loginDate',
+			title : '最后登录日期',
+			width : 150,
+			align : 'center'
+		}, {
+			field : 'loginIp',
+			title : '最后登录IP',
+			width : 150,
+			align : 'center'
+		}, {
+			field : 'isAccountEnabled',
+			title : '是否启用',
+			width : 80,
+			align : 'center',
+			formatter: function(value,row,index){
+				if (value){
+					return "是";
+				} else {
+					return "否";
+				}
+			}
+		}, {
+			field : 'createDate',
+			title : '创建时间',
+			width : 150,
+			align : 'center'
+		} ] ];
+		$('#grid').datagrid({
+			iconCls : 'icon-forward',
+			rownumbers : true,
+			pagination:true,//分页控件  
+			pageSize:20,
+			height:($(window).height()-20),
+			toolbar : '#v_toolbar',
+			url : "${base}/admin/admin/list.json",
+			idField : 'id', 
+			columns : columns,
+			onDblClickRow : doDblClickRow
+		});
+
+		// 修改窗口
+		$('#editGenreWindow').window({
+	        title: '修改歌曲类别信息',
+	        width: 400,
+	        modal: true,
+	        shadow: true,
+	        closed: true,
+	        height: 250,
+	        resizable:false
+	    });
+	}) ;//Jquery END
+		// 双击
+		function doDblClickRow(rowIndex, rowData){
+			// 判断用户是否选中元素 
+			$("#genreId").val(rowData.id);
+			$("#genreName").val(rowData.name);
+			$("#genreDescription").val(rowData.description);
+			$('#editGenreWindow').window("open"); // 弹出窗口
+		
+		};
+		//操作函数 删除
+		function doDelete(){
+			var array = $('#grid').datagrid('getSelections');
+			if(array.length == 0){
+				// 一条没选
+				$.messager.alert('警告','删除数据必须选中至少一条数据','warning');
+				return ;
+			}
+			var ids =[];
+			$.each(array, function(index, item){
+				ids.push(item.id);
+			});
+			$.messager.confirm('提示信息','你将删除['+array.length+']条记录',function(r){
+					if (r){
+						$.ajax({  
+					        url: "${base}/admin/admin/delete.action",  
+					        type: "POST",
+					        traditional:true, //这个需要转存为数组 把ids[] 写成ids 数组
+					        async: false,  
+					        data: {"ids":ids}, //不能直接写成 {id:"123",code:"tomcat"}  
+					        cache: false,  
+					        success: function (data) { 
+					        	//var data = eval('(' + $(response).text()+ ')');
+					         	$.messager.alert('提示信息',data.message,'info');
+					         	//清空上一条选择的记录
+					         	$("#grid").datagrid("clearSelections");
+					            $("#grid").datagrid("reload");
+					        },  
+					        error: function (data) { 
+					       		$.messager.alert('错误提示','删除失败','error');
+					        }
+					    }); 
+					}//End confirm
+				});
+		}
+		//END  操作函数 修改
+	function doReload(){
+		$('#grid').datagrid('reload');
+	}
+</script>
+</html>

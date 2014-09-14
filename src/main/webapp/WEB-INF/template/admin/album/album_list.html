@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>专辑管理列表</title>
+<#include "common/include.html">
+<script type="text/javascript" src="${base}/template/admin/js/easyui/ext/datagrid-detailview.js"></script>	
+<script type="text/javascript">
+	// 定义标题栏
+	var columns = [ [ {
+		field : 'id',
+		checkbox : true,
+		rowspan : 2
+	},{
+		field : 'name',
+		title : '专辑名',
+		width : 180,
+		rowspan : 2
+	},{
+		field : 'artist.name',
+		title : '歌手名',
+		width : 180,
+		rowspan : 2
+	},{
+		field : 'year',
+		title : '发行年份',
+		width : 80,
+		rowspan : 2,
+		align : 'center'
+	},{
+		field : 'listeners',
+		title : '试听次数',
+		width : 80,
+		rowspan : 2,
+		align : 'center'
+	},{
+		field : 'playCount',
+		title : '播放次数',
+		width : 80,
+		align : 'center',
+		rowspan : 2
+	},{
+		field : 'songCount',
+		title : '歌曲数',
+		width : 80,
+		align : 'center'
+	},{
+		field : 'genre',
+		title : '曲风',
+		width : 180,
+		rowspan : 2
+	},{
+		field : 'createDate',
+		title : '创建时间',
+		width : 180,
+		align : 'center'
+	} ] ];
+	$(function(){
+		// 初始化 datagrid
+		$('#grid').datagrid( {
+			iconCls : 'icon-forward',
+			rownumbers : true,
+			pagination:true,//分页控件  
+			pageSize:20,
+			height:($(window).height()-20),
+			toolbar : '#v_toolbar',
+			url : "${base}/admin/album/list.json",
+			idField : 'id', 
+			columns : columns,
+			onDblClickRow : doDblClickRow
+		});	
+		//jquery END
+	});
+	// 双击
+	function doDblClickRow(rowIndex, rowData){
+		
+	};
+	function doDelete() {
+		// 判断用户是否选中元素 
+			var array = $('#grid').datagrid('getSelections');
+			if(array.length == 0){
+				// 一条没选
+				$.messager.alert('警告','删除数据必须选中至少一条数据','warning');
+				return ;
+			}
+			var ids =[];
+			$.each(array, function(index, item){
+				ids.push(item.id);
+				//ids+=item.id;
+			});
+			$.messager.confirm('确定删除', '你将要删除'+ids.length+'条数据?', function(r){
+				if (r){
+					$.ajax({  
+				        url: "${base}/admin/album/delete.do",  
+				        type: "POST",
+				        traditional:true, //这个需要转存为数组 把ids[] 写成ids 数组
+				        async: false,  
+				        data: {"ids":ids}, //不能直接写成 {id:"123",code:"tomcat"}  
+				        cache: false,  
+				        success: function (data) { 
+				        	//var data = eval('(' + $(response).text()+ ')');
+				         	$.messager.alert('提示信息',data.message,'info');
+				         	//清空上一条选择的记录
+				         	$("#grid").datagrid("clearSelections");
+				            $("#grid").datagrid("reload");
+				        },  
+				        error: function (data) { 
+				       		$.messager.alert('错误提示','删除失败','error');
+				        }
+				    }); 
+				}//End confirm
+			});
+			
+	};
+	//刷新
+	function doFlush(){
+		$("#grid").datagrid("reload");
+	};
+</script>		
+</head>
+<body>
+    <div class="easyui-panel" border="false" style="padding:10px;">
+		<div id="v_toolbar">  
+		    <a href="${base}/admin/album/add.xhtml" class="easyui-linkbutton" iconCls="icon-add" plain="true">添加</a> 
+		    <a href="javascript:void(0);" onclick="doDelete()" class="easyui-linkbutton" iconCls="icon-remove" plain="true">删除</a>  
+		    <a href="javascript:void(0);" onclick="doFlush();" class="easyui-linkbutton" iconCls="icon-search" plain="true">刷新</a>
+		  	  歌手名: <input class="easyui-text" style="width:180px">
+      		<a href="#" class="easyui-linkbutton" iconCls="icon-search">搜索</a>
+		</div> 
+		<form id="gridForm" method="post">
+		 <table id="grid" title="歌手列表">
+		 </table>
+		</form>
+	</div>
+</body>
+</html>
