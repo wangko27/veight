@@ -6,7 +6,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.veight.admin.dao.AdminDao;
-import org.veight.admin.domain.Admin;
+import org.veight.domain.Admin;
 import org.veight.admin.service.AdminService;
 /**
  * Service实现类 - 管理员

@@ -6,7 +6,7 @@ import org.jaudiotagger.audio.AudioFileIO;
 import org.jaudiotagger.audio.AudioHeader;
 import org.jaudiotagger.tag.FieldKey;
 import org.jaudiotagger.tag.Tag;
-import org.veight.admin.domain.SongMetaData;
+import org.veight.domain.SongMetaData;
 /**
  * 获取MP3的元数据信息
  * @author Administrator

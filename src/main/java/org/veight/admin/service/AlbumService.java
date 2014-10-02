@@ -1,6 +1,6 @@
 package org.veight.admin.service;
 
-import org.veight.admin.domain.Album;
+import org.veight.domain.Album;
 /**
  * 专辑 服务接口
  * @author Administrator

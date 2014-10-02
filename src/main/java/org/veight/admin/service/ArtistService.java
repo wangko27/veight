@@ -1,6 +1,6 @@
 package org.veight.admin.service;
 
-import org.veight.admin.domain.Artist;
+import org.veight.domain.Artist;
 /**
  * Servie接口 歌手(乐队)
  * @author Administrator

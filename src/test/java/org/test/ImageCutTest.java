@@ -39,10 +39,10 @@ public class ImageCutTest {
     }
     @Test
     public void cut() throws Exception{
-        File srcfile=new File("d://aa.png");
-        File destfile=new File("d://c9c.png");
-        ImageUtils.cutImage(srcfile, destfile, 0, 0, 1366, 768);
-        System.out.println("我是测试文件");
+//        File srcfile=new File("d://aa.png");
+//        File destfile=new File("d://c9c.png");
+//        ImageUtils.cutImage(srcfile, destfile, 0, 0, 1366, 768);
+//        System.out.println("我是测试文件");
     }
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:

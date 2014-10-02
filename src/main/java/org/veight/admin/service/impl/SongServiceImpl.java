@@ -3,10 +3,10 @@ package org.veight.admin.service.impl;
 import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import org.veight.admin.dao.SongDao;
-import org.veight.admin.domain.Song;
+import org.veight.domain.Song;
 import org.veight.admin.service.SongService;
 import org.veight.bean.Pager;
-import org.veight.member.domain.Member;
+import org.veight.domain.member.Member;
 
 /**
  * 歌曲Servie 实现

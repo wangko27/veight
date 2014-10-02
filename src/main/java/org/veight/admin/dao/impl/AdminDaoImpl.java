@@ -1,7 +1,7 @@
 package org.veight.admin.dao.impl;
 import org.springframework.stereotype.Repository;
 import org.veight.admin.dao.AdminDao;
-import org.veight.admin.domain.Admin;
+import org.veight.domain.Admin;
 /**
  * Dao实现类 - 管理员
  * @author Administrator

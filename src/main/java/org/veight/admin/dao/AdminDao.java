@@ -1,6 +1,6 @@
 package org.veight.admin.dao;
 
-import org.veight.admin.domain.Admin;
+import org.veight.domain.Admin;
 /**
  *  Dao接口 - 管理员
  * @author Administrator

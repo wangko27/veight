@@ -1,6 +1,6 @@
 package org.veight.admin.service;
 
-import org.veight.admin.domain.Genre;
+import org.veight.domain.Genre;
 
 /**
  * 接口 歌曲分类Service

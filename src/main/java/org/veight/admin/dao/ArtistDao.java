@@ -1,6 +1,6 @@
 package org.veight.admin.dao;
 
-import org.veight.admin.domain.Artist;
+import org.veight.domain.Artist;
 /**
  * 歌曲 DAO
  * @author Administrator

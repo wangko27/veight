@@ -11,16 +11,16 @@
 	<http pattern="/admin/login/index.xhtml" security="none"/>
 	<!-- 访问权限控制 -->
 	<http>
-	 	<intercept-url pattern="/admin/logout" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
+	 	<intercept-url pattern="/admin/logout.xhtml" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
 		<intercept-url pattern="/admin/song/**" access="ROLE_SONG"/>
 		<intercept-url pattern="/admin/document/**" access="ROLE_DOCUMENT"/>
 		<intercept-url pattern="/admin/member/**" access="ROLE_MEMBER"/>
 		<intercept-url pattern="/admin/**" access="ROLE_USER"/>
 		<form-login 
-		login-processing-url="/admin/login/loginVerify.action"
-		login-page="/admin/login/index.xhtml" 
-		authentication-failure-url="/admin/login/login.xhtml" 
-		default-target-url="/admin/menu/main.xhtml"/>
+                    login-processing-url="/admin/login/loginVerify.action"
+                    login-page="/admin/login/index.xhtml" 
+                    authentication-failure-url="/admin/login/login.xhtml" 
+                    default-target-url="/admin/menu/main.xhtml"/>
 		<access-denied-handler error-page="/denied"/>
 		<logout invalidate-session="true" 
 			logout-success-url="/admin/login/login.xhtml" 

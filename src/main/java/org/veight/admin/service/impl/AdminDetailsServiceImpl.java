@@ -11,8 +11,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.veight.admin.dao.AdminDao;
-import org.veight.admin.domain.Admin;
-import org.veight.admin.domain.Role;
+import org.veight.domain.Admin;
+import org.veight.domain.Role;
 /**
  * Service实现类 - 后台权限认证
  * @author Administrator

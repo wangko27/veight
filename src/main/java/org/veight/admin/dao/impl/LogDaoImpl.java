@@ -1,7 +1,7 @@
 package org.veight.admin.dao.impl;
 import org.springframework.stereotype.Repository;
 import org.veight.admin.dao.LogDao;
-import org.veight.admin.domain.Log;
+import org.veight.domain.Log;
 /**
  * Dao - 日志
  */

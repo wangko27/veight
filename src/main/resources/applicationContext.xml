@@ -57,19 +57,20 @@
         <!-- 注入实体对象 -->
         <property name="annotatedClasses">
             <list>
-                <value>org.veight.admin.domain.Admin</value>
-                <value>org.veight.admin.domain.Role</value>
-                <value>org.veight.admin.domain.Log</value>
-                <value>org.veight.admin.domain.ImageInfo</value>
-                <value>org.veight.admin.domain.Album</value>
-                <value>org.veight.admin.domain.AlbumType</value>
-                <value>org.veight.admin.domain.Artist</value>
-                <value>org.veight.admin.domain.Genre</value>
-                <value>org.veight.admin.domain.Song</value>
-                <value>org.veight.admin.domain.SongCategory</value>
-                <value>org.veight.admin.domain.SongMetaData</value>
-                <value>org.veight.member.domain.Member</value>
-                <value>org.veight.member.domain.MemberRank</value>
+                <value>org.veight.domain.Admin</value>
+                <value>org.veight.domain.Role</value>
+                <value>org.veight.domain.Log</value>
+                <value>org.veight.domain.ImageInfo</value>
+                <value>org.veight.domain.Album</value>
+                <value>org.veight.domain.AlbumType</value>
+                <value>org.veight.domain.Artist</value>
+                <value>org.veight.domain.Genre</value>
+                <value>org.veight.domain.Song</value>
+                <value>org.veight.domain.SongCategory</value>
+                <value>org.veight.domain.SongMetaData</value>
+                <value>org.veight.domain.member.Member</value>
+                <value>org.veight.domain.member.MemberRank</value>
+                <value>org.veight.domain.member.MemberAttribute</value>
             </list>
         </property>
     </bean>

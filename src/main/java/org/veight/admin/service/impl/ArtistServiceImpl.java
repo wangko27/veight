@@ -5,7 +5,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 import org.veight.admin.dao.ArtistDao;
-import org.veight.admin.domain.Artist;
+import org.veight.domain.Artist;
 import org.veight.admin.service.ArtistService;
 /**
  * service实现 歌手(乐队)

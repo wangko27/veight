@@ -1,6 +1,6 @@
 package org.veight.admin.service;
 
-import org.veight.admin.domain.Log;
+import org.veight.domain.Log;
 
 /**
  * Service - 日志

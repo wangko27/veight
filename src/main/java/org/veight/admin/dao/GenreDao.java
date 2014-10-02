@@ -1,6 +1,6 @@
 package org.veight.admin.dao;
 
-import org.veight.admin.domain.Genre;
+import org.veight.domain.Genre;
 /**
  * 歌曲分类 DAO
  * @author Administrator
