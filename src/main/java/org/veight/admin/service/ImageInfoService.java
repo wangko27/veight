@@ -1,6 +1,6 @@
 package org.veight.admin.service;
 import org.springframework.web.multipart.MultipartFile;
-import org.veight.admin.domain.ImageInfo;
+import org.veight.domain.ImageInfo;
 
 /**
  * 图片上传服务接口

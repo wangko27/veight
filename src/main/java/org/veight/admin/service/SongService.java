@@ -1,8 +1,8 @@
 package org.veight.admin.service;
 
-import org.veight.admin.domain.Song;
+import org.veight.domain.Song;
 import org.veight.bean.Pager;
-import org.veight.member.domain.Member;
+import org.veight.domain.member.Member;
 
 /**
  * 接口 歌曲Service

@@ -2,7 +2,7 @@ package org.veight.admin.dao.impl;
 
 import org.springframework.stereotype.Repository;
 import org.veight.admin.dao.GenreDao;
-import org.veight.admin.domain.Genre;
+import org.veight.domain.Genre;
 /**
  * 歌曲 DAO实现
  * @author Administrator

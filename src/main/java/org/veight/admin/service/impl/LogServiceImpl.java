@@ -2,7 +2,7 @@ package org.veight.admin.service.impl;
 import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import org.veight.admin.dao.LogDao;
-import org.veight.admin.domain.Log;
+import org.veight.domain.Log;
 import org.veight.admin.service.LogService;
 /**
  * Service - 日志

@@ -13,7 +13,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.util.AntPathMatcher;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
-import org.veight.admin.domain.Log;
+import org.veight.domain.Log;
 import org.veight.admin.service.AdminService;
 import org.veight.admin.service.LogService;
 

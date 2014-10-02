@@ -3,7 +3,7 @@ package org.veight.admin.service.impl;
 import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import org.veight.admin.dao.GenreDao;
-import org.veight.admin.domain.Genre;
+import org.veight.domain.Genre;
 import org.veight.admin.service.GenreService;
 
 /**

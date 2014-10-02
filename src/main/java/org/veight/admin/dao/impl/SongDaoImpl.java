@@ -5,9 +5,9 @@ import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 import org.veight.admin.dao.SongDao;
-import org.veight.admin.domain.Song;
+import org.veight.domain.Song;
 import org.veight.bean.Pager;
-import org.veight.member.domain.Member;
+import org.veight.domain.member.Member;
 /**
  * 歌曲 DAO实现
  * @author Administrator

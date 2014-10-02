@@ -1,6 +1,6 @@
 package org.veight.admin.dao;
 
-import org.veight.admin.domain.Log;
+import org.veight.domain.Log;
 
 /**
  * Dao - 日志

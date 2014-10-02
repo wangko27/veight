@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-import org.veight.admin.domain.SongMetaData;
+import org.veight.domain.SongMetaData;
 import org.veight.utils.Mp3Util;
 
 /**

@@ -2,7 +2,7 @@ package org.veight.admin.dao.impl;
 
 import org.springframework.stereotype.Repository;
 import org.veight.admin.dao.ImageInfoDao;
-import org.veight.admin.domain.ImageInfo;
+import org.veight.domain.ImageInfo;
 /**
  * 图片信息DAO实现
  * @author Administrator

@@ -1,6 +1,6 @@
 package org.veight.admin.dao;
 
-import org.veight.admin.domain.ImageInfo;
+import org.veight.domain.ImageInfo;
 /**
  * 图片信息DAO
  * @author Administrator

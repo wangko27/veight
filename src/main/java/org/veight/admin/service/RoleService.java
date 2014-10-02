@@ -1,6 +1,6 @@
 package org.veight.admin.service;
 
-import org.veight.admin.domain.Role;
+import org.veight.domain.Role;
 /**
  * Service - 角色
  * 

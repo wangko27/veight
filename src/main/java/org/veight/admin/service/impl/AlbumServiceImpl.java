@@ -4,7 +4,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 import org.veight.admin.dao.AlbumDao;
-import org.veight.admin.domain.Album;
+import org.veight.domain.Album;
 import org.veight.admin.service.AlbumService;
 /**
  * 专辑 服务实现

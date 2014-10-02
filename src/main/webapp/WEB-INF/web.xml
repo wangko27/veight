@@ -109,4 +109,7 @@
     <session-config>
         <session-timeout>1000</session-timeout>
     </session-config>
+    <welcome-file-list>
+        <welcome-file>index.xhtml</welcome-file>
+    </welcome-file-list>
 </web-app>

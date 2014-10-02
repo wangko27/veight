@@ -1,6 +1,6 @@
 package org.veight.admin.service;
 
-import org.veight.admin.domain.Admin;
+import org.veight.domain.Admin;
 
 /**
  * Service接口 - 管理员
