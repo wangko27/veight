@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 * @开发团队  845885222@qq.com
 */
 @Controller
+@RequestMapping("/v1")
 public class HomePlayerController extends ABaseHomeController{
 	@RequestMapping(value="/play.xhtml")
 	public String play(){

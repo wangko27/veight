@@ -12,15 +12,15 @@
             <div class="container aside-xl">
                 <a class="navbar-brand block" href="${base}/index.xhtml"><span class="h1 font-bold">V8音乐</span></a>
                 <section class="m-b-lg">
-                    <form action="index.html">
+                    <form action="${base}/v1/member/register.xhtml" method="POST">
                         <div class="form-group">
-                            <input placeholder="用户名" class="form-control rounded input-lg text-center no-border">
+                            <input placeholder="用户名" name="username" class="form-control rounded input-lg text-center no-border">
                         </div>
                         <div class="form-group">
-                            <input type="text" placeholder="邮件" class="form-control rounded input-lg text-center no-border">
+                            <input type="text" placeholder="邮件" name="email" class="form-control rounded input-lg text-center no-border">
                         </div>
                         <div class="form-group">
-                            <input type="text" placeholder="密码" class="form-control rounded input-lg text-center no-border">
+                            <input type="text" placeholder="密码" name="password" class="form-control rounded input-lg text-center no-border">
                         </div>
                         <div class="checkbox i-checks m-b">
                             <label class="m-l">

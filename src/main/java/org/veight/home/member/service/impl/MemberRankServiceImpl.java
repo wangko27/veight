@@ -42,4 +42,10 @@ public class MemberRankServiceImpl extends ABaseServiceImpl<MemberRank, String> 
 			}
 		}
 	}
+
+    public MemberRank findDefault() {
+        return memberRankDao.findDefault();
+    }
+        
+	
 }

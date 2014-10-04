@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * 路径： HomeController.java
  */
 @Controller
+@RequestMapping("/v1")
 public class HomeController extends ABaseHomeController{
 	/**
 	 * 前台首页
