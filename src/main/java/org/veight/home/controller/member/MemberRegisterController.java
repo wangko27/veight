@@ -36,9 +36,9 @@ import org.veight.domain.member.Member;
  *
  *
  */
-@Controller("shopRegisterController")
-@RequestMapping("/member")
-public class RegisterController extends ABaseController {
+@Controller
+@RequestMapping("/v1/member")
+public class MemberRegisterController extends ABaseController {
 
     @Resource
     private CaptchaService captchaService;
@@ -50,34 +50,45 @@ public class RegisterController extends ABaseController {
     @Resource
     private MemberAttributeService memberAttributeService;
 
+    /**
+     * 注册页面
+     * @param model
+     * @param request
+     * @return
+     * @throws Exception 
+     */
     @RequestMapping(value = "/registration.xhtml", method = RequestMethod.GET)
-    public String displayRegistration(final Model model, final HttpServletRequest request, final HttpServletResponse response) throws Exception {
+    public String displayRegistration(Model model, HttpServletRequest request) throws Exception {
 
         return "/home/registration";
     }
 
-    @RequestMapping(value = "/register.xhtml", method = RequestMethod.GET)
-    public String registerMember(final Model model, final HttpServletRequest request, final HttpServletResponse response) throws Exception {
-
-        return "/home/registration";
-    }
     /**
      * 注册提交
      */
-    @RequestMapping(value = "/submit", method = RequestMethod.POST)
-    public String submit(String username, String password, String email, HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+    @RequestMapping(value = "/register.xhtml", method = RequestMethod.POST)
+    public String registerMember(String username, String password, String email, HttpServletRequest request, HttpServletResponse response, HttpSession session) {
         Member member = new Member();
-
+        System.out.println("username" + username);
+        System.out.println("password" + password);
+        System.out.println("email" + email);
+       
         member.setUsername(username.toLowerCase());
         member.setPassword(DigestUtils.md5Hex(password));
         member.setEmail(email);
         member.setLoginFailureCount(0);
         member.setLockedDate(null);
+        member.setPoint(50);
+        member.setIsAccountLocked(false);
+        member.setIsAccountEnabled(true);
         member.setRegisterIp(request.getRemoteAddr());
         member.setLoginIp(request.getRemoteAddr());
         member.setLoginDate(new Date());
-        memberService.save(member);
-        return "redirect:index.xhtml";
+        member.setMemberRank(memberRankService.findDefault());
+        String id = memberService.save(member);
+        
+        session.setAttribute(Member.LOGIN_MEMBER_ID_SESSION_NAME, id);
+        return "redirect:/v1/index.xhtml";
     }
 
 }

@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 import org.veight.admin.dao.impl.ABaseDaoImpl;
 import org.veight.home.member.dao.MemberDao;
 import org.veight.domain.member.Member;
+
 /**
  * Dao - 会员
  */
@@ -45,8 +46,7 @@ public class MemberDaoImpl extends ABaseDaoImpl<Member, String> implements Membe
             String hql = "from Member members where lower(members.username) = lower(?)";
             return (Member) getSession().createQuery(hql).setParameter(0, username).uniqueResult();
         } catch (NoResultException e) {
-            
-            
+
             return null;
         }
     }
@@ -56,7 +56,6 @@ public class MemberDaoImpl extends ABaseDaoImpl<Member, String> implements Membe
             return Collections.<Member>emptyList();
         }
         String hql = "from Member members where lower(members.email) = lower(:email)";
-        return  (List<Member>) getSession().createQuery(hql).setParameter("email", email).uniqueResult();
+        return (List<Member>) getSession().createQuery(hql).setParameter("email", email).uniqueResult();
     }
-
 }

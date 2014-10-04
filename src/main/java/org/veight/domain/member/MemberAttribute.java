@@ -3,8 +3,7 @@ package org.veight.domain.member;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Enumerated;
-
-import org.veight.domain.ABaseEntity;
+import javax.persistence.Table;
 import org.veight.domain.ABaseEntity;
 
 /**
@@ -15,6 +14,7 @@ import org.veight.domain.ABaseEntity;
  */
 
 @Entity
+@Table(name = "v_member_attribute")
 public class MemberAttribute extends ABaseEntity {
 
 	private static final long serialVersionUID = 4513705276569738136L;

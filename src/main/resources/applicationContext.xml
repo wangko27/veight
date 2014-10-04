@@ -105,6 +105,8 @@
     <aop:config>
         <aop:advisor pointcut="execution(* org.veight.*.service..*.*(..))"
                      advice-ref="transactionAdvice" />
+        <aop:advisor pointcut="execution(* org.veight.home.*.service..*.*(..))"
+                      advice-ref="transactionAdvice" />
     </aop:config>
     <!-- 配置JCaptcha验证码功能 -->
     <bean id="captchaService"

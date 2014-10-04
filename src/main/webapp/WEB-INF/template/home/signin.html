@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>  
+        <meta charset="utf-8" />
+        <title>音乐风格-分享自由-v8音乐</title>
+        <meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <#include "home/home-include-css.html">
+    </head>
+    <body class="bg-info dker">
+        <section id="content" class="m-t-lg wrapper-md animated fadeInUp">    
+            <div class="container aside-xl">
+                <a class="navbar-brand block" href="${base}/v1/index.xhtml"><span class="h1 font-bold">V8音乐</span></a>
+                <section class="m-b-lg">
+                    <form action="/v1/member/loginVerify.action" method="POST">
+                        <div class="form-group">
+                            <input type="text" name="j_username" value="wangko27" class="form-control rounded input-lg text-center no-border">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" placeholder="123456" name="j_password" class="form-control rounded input-lg text-center no-border">
+                        </div>
+                        <button type="submit" class="btn btn-lg btn-warning lt b-white b-2x btn-block btn-rounded"><i class="icon-arrow-right pull-right"></i><span class="m-r-n-lg">登录</span></button>
+                        <div class="text-center m-t m-b"><a href="#"><small>忘记密码?</small></a></div>
+                        <div class="line line-dashed"></div>
+                        <p class="text-muted text-center"><small>你是否有账号?</small></p>
+                        <a href="signup.html" class="btn btn-lg btn-info btn-block rounded">注册新用户</a>
+                    </form>
+                </section>
+            </div>
+        </section>
+        <!-- footer -->
+        <footer id="footer">
+            <div class="text-center padder">
+                <p>
+                    <small>Web app framework base on Bootstrap<br>&copy; 2014</small>
+                </p>
+            </div>
+        </footer>
+        <!-- / footer -->
+        <#include "home/home-include-js.html">
+    </body>
+</html>

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * 路径： HomeGenreController.java
  */
 @Controller
+@RequestMapping("/v1")
 public class HomeGenreController {
 	/**
 	 * 曲风点击
