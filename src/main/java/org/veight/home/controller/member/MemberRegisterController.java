@@ -50,6 +50,13 @@ public class MemberRegisterController extends ABaseController {
     @Resource
     private MemberAttributeService memberAttributeService;
 
+    /**
+     * 注册页面
+     * @param model
+     * @param request
+     * @return
+     * @throws Exception 
+     */
     @RequestMapping(value = "/registration.xhtml", method = RequestMethod.GET)
     public String displayRegistration(Model model, HttpServletRequest request) throws Exception {
 
@@ -71,11 +78,16 @@ public class MemberRegisterController extends ABaseController {
         member.setEmail(email);
         member.setLoginFailureCount(0);
         member.setLockedDate(null);
+        member.setPoint(50);
+        member.setIsAccountLocked(false);
+        member.setIsAccountEnabled(true);
         member.setRegisterIp(request.getRemoteAddr());
         member.setLoginIp(request.getRemoteAddr());
         member.setLoginDate(new Date());
         member.setMemberRank(memberRankService.findDefault());
-        memberService.save(member);
+        String id = memberService.save(member);
+        
+        session.setAttribute(Member.LOGIN_MEMBER_ID_SESSION_NAME, id);
         return "redirect:/v1/index.xhtml";
     }
 

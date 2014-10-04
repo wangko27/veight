@@ -1,9 +1,5 @@
 package org.veight.home.member.service;
-
-import java.math.BigDecimal;
-import java.util.Date;
 import java.util.List;
-import org.veight.domain.Admin;
 import org.veight.admin.service.ABaseService;
 import org.veight.domain.member.Member;
 /**
@@ -21,7 +17,7 @@ public interface MemberService extends ABaseService<Member, String> {
 	 *            用户名(忽略大小写)
 	 * @return 用户名是否存在
 	 */
-	boolean usernameExists(String username);
+	public boolean usernameExists(String username);
 
 	
 
@@ -32,7 +28,7 @@ public interface MemberService extends ABaseService<Member, String> {
 	 *            E-mail(忽略大小写)
 	 * @return E-mail是否存在
 	 */
-	boolean emailExists(String email);
+	public boolean emailExists(String email);
 
 	/**
 	 * 判断E-mail是否唯一
@@ -43,14 +39,15 @@ public interface MemberService extends ABaseService<Member, String> {
 	 *            当前E-mail(忽略大小写)
 	 * @return E-mail是否唯一
 	 */
-	boolean emailUnique(String previousEmail, String currentEmail);
+	public boolean emailUnique(String previousEmail, String currentEmail);
 	/**
 	 * 保存会员
-	 * 
-	 * @param member
-	 *            会员
-	 * @param operator
-	 *            操作员
 	 */
-	List<Member> findListByEmail(String email);
+	public List<Member> findListByEmail(String email);
+        /**
+         * 根据用户获取该用户信息
+         * @param nick
+         * @return 
+         */
+        public Member getByNick(String nick);
 }

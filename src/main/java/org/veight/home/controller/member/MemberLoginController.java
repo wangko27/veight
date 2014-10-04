@@ -17,20 +17,15 @@ import org.veight.admin.controller.ABaseController;
  * @author Administrator
  */
 @Controller
-@RequestMapping("/login")
+@RequestMapping("/v1/member")
 public class MemberLoginController extends ABaseController {
 
     /**
      * 登录页面
      */
-    @RequestMapping(method = RequestMethod.GET)
-    public String index(String redirectUrl, HttpServletRequest request, ModelMap model) {
-       // Setting setting = SettingUtils.get();
-       // if (redirectUrl != null && !redirectUrl.equalsIgnoreCase(setting.getSiteUrl()) && !redirectUrl.startsWith(request.getContextPath() + "/") && !redirectUrl.startsWith(setting.getSiteUrl() + "/")) {
-       //     redirectUrl = null;
-       // }
-        //model.addAttribute("redirectUrl", redirectUrl);
-        //model.addAttribute("captchaId", UUID.randomUUID().toString());
-        return "/shop/login/index";
+    @RequestMapping("signin.xhtml")
+    public String signin(String redirectUrl, HttpServletRequest request, ModelMap model) {
+
+        return "/home/signin";
     }
 }
