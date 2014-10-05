@@ -33,7 +33,7 @@ public class LoginController extends ABaseController{
 	 */
 	@RequestMapping("/index.xhtml")
 	public String index() throws Exception {
-
+                   System.out.println("login page..");
 		return "admin/login/index";
 	}
 	// 登录错误处理
