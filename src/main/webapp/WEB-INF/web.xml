@@ -71,15 +71,7 @@
         <filter-name>openSessionInViewFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
-    <!-- Spring Secutiry3.2.4的过滤器链配置  -->
-    <filter>
-        <filter-name>springSecurityFilterChain</filter-name>
-        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
-    </filter>
-    <filter-mapping>
-        <filter-name>springSecurityFilterChain</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
+   
     <!-- spring mvc servlet spring mvc 配置文件 -->
     <servlet>
         <servlet-name>springmvc</servlet-name>
@@ -106,6 +98,16 @@
         <servlet-name>springmvc</servlet-name>
         <url-pattern>*.json</url-pattern>
     </servlet-mapping>
+    <!-- Spring Secutiry3.2.4的过滤器链配置  -->
+    <filter>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    
     <session-config>
         <session-timeout>1000</session-timeout>
     </session-config>

@@ -7,10 +7,11 @@ package org.veight.home.member.service.security;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 import javax.annotation.Resource;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.GrantedAuthorityImpl;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -38,20 +39,18 @@ public class MemberDetailsServiceImpl implements UserDetailsService {
         Collection<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
         try {
             member = memberService.getByNick(userName);
-
             if (member == null) {
                 return null;
             }
-
+            System.out.println("member:" + member.getUsername());
             GrantedAuthority grantedAuthority = new GrantedAuthorityImpl("ROLE_MEMBER_AUTH");
             authorities.add(grantedAuthority);
         } catch (Exception e) {
             LOGGER.error("Exception while querrying customer", e);
             e.printStackTrace();
         }
-
-        User authUser = new User(userName, member.getPassword(), true, true,true, true, authorities);
-
+        UserDetails authUser = new User(userName, member.getPassword(), true, true, true, true, authorities);
+        
         return authUser;
     }
 

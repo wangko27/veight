@@ -37,7 +37,7 @@ import org.veight.domain.member.Member;
  *
  */
 @Controller
-@RequestMapping("/v1/member")
+@RequestMapping("/v1")
 public class MemberRegisterController extends ABaseController {
 
     @Resource

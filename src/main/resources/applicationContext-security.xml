@@ -26,20 +26,15 @@
                 logout-success-url="/admin/login/login.xhtml" 
                 logout-url="/admin/logout.xhtml"/>
     </http>
-   <!--会员登录验证-->
-    <http pattern="/v1/member/signin.xhtml" security="none"/>
-    <http pattern="/v1/**" auto-config="true" authentication-manager-ref="memberAuthenticationManager">
-        <intercept-url pattern="/v1/member/**" access="ROLE_MEMBER_AUTH"/>
-        <form-login
-            login-processing-url="/v1/member/loginVerify.action"
-            login-page="/v1/member/signin.xhtml" 
-            authentication-failure-url="/v1/member/signin.xhtml" 
-            default-target-url="/v1/index.xhtml"/>
-        <access-denied-handler error-page="/denied"/>
-        <logout/>
+    <!--会员登录验证-->
+    <http pattern="/v1/member/**" auto-config="true" authentication-manager-ref="memberAuthenticationManager">
+        <intercept-url pattern="/v1/member/signin.xhtml" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+        <intercept-url pattern="/v1/j_spring_security_logout" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+        <intercept-url pattern="/v1/member/**" access="ROLE_MEMBER_AUTH" />
+        <form-login login-page="/v1/member/signin.xhtml" login-processing-url="/v1/member/j_spring_security_check" default-target-url="/v1/member/dashboard.xhtml"/>
+        <logout logout-url="/v1/j_spring_security_logout" logout-success-url="/v1/member/signin.xhtml" />
     </http>
-    
-    
+
     <authentication-manager id="userAuthenticationManager">
         <authentication-provider>
             <user-service>
@@ -50,8 +45,14 @@
     </authentication-manager>
     <!--会员登录验证器-->
     <authentication-manager id="memberAuthenticationManager">
-        <authentication-provider user-service-ref="memberDetailsService">
+        <!--authentication-provider user-service-ref="memberDetailsService">
             <password-encoder hash="sha" />
+        </authentication-provider-->
+        <authentication-provider>
+            <user-service>
+                <user name="member" password="123456" authorities="ROLE_MEMBER_AUTH" />
+                <user name="wangko27" password="123456" authorities="ROLE_MEMBER_AUTH" />
+            </user-service>
         </authentication-provider>
     </authentication-manager>
     

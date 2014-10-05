@@ -12,7 +12,7 @@
             <div class="container aside-xl">
                 <a class="navbar-brand block" href="${base}/v1/index.xhtml"><span class="h1 font-bold">V8音乐</span></a>
                 <section class="m-b-lg">
-                    <form action="/v1/member/loginVerify.action" method="POST">
+                    <form action="${base}/v1/member/j_spring_security_check" method="POST">
                         <div class="form-group">
                             <input type="text" name="j_username" value="wangko27" class="form-control rounded input-lg text-center no-border">
                         </div>
@@ -31,8 +31,7 @@
         <!-- footer -->
         <footer id="footer">
             <div class="text-center padder">
-                <p>
-                    <small>Web app framework base on Bootstrap<br>&copy; 2014</small>
+                <p>Web app framework base on Bootstrap<br>&copy; 2014</small>
                 </p>
             </div>
         </footer>
