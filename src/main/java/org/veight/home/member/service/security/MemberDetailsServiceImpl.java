@@ -6,12 +6,10 @@
 package org.veight.home.member.service.security;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
+import java.util.List;
 import javax.annotation.Resource;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.GrantedAuthorityImpl;
-import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -34,24 +32,21 @@ public class MemberDetailsServiceImpl implements UserDetailsService {
     private static final org.slf4j.Logger LOGGER = org.slf4j.LoggerFactory.getLogger(MemberDetailsServiceImpl.class);
 
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
-
-        Member member = null;
-        Collection<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
+        UserDetails user = null;
         try {
-            member = memberService.getByNick(userName);
+            Member member = memberService.getByNick(userName);
             if (member == null) {
                 return null;
             }
-            System.out.println("member:" + member.getUsername());
-            GrantedAuthority grantedAuthority = new GrantedAuthorityImpl("ROLE_MEMBER_AUTH");
-            authorities.add(grantedAuthority);
+            List<GrantedAuthority> authList = new ArrayList<GrantedAuthority>();
+            authList.add(new SimpleGrantedAuthority("ROLE_MEMBER_AUTH"));
+            user = new User(member.getUsername(), member.getPassword(), true, true, true, true, authList);
         } catch (Exception e) {
-            LOGGER.error("Exception while querrying customer", e);
-            e.printStackTrace();
+            LOGGER.error(userName+" UsernameNotFoundException");  
+            throw new UsernameNotFoundException("Error in retrieving user");
         }
-        UserDetails authUser = new User(userName, member.getPassword(), true, true, true, true, authorities);
-        
-        return authUser;
+        LOGGER.info("当前会员：" + user.getUsername());
+        return user;
     }
 
 }
