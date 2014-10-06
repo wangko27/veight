@@ -2,7 +2,7 @@
 <html lang="en" class="app">
     <head>  
         <meta charset="utf-8" />
-        <title>随机搜索-分享自由-v8音乐</title>
+        <title>个人中心-分享自由-v8音乐</title>
         <meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
         <#include "home/home-include-css.html">
@@ -18,33 +18,63 @@
             <section id="content">
                 <section class="vbox">
                     <section class="scrollable wrapper">
-                        <p><strong>Portlet</strong> (support on touch screen)</p>
+                        <p><strong>[wangko27]个人中心</strong> (支持手机显示)</p>
                         <div class="row">
                             <div class="col-sm-6 portlet">
                                 <section class="panel panel-info portlet-item">
                                     <header class="panel-heading">
-                                        Quick link
+                                        我的歌单
                                     </header>
-                                    <div class="list-group bg-white">
-                                        <a href="#" class="list-group-item">
-                                            <i class="fa fa-fw fa-envelope"></i> Inbox
-                                        </a>
-                                        <a href="#" class="list-group-item">
-                                            <i class="fa fa-fw fa-eye"></i> Profile visits
-                                        </a>
-                                        <a href="#" class="list-group-item">
-                                            <i class="fa fa-fw fa-phone"></i> Call
-                                        </a>
-                                        <a href="#" class="list-group-item">
-                                            <i class="fa fa-fw fa-comments-o"></i> Messages
-                                        </a>
-                                        <a href="#" class="list-group-item">
-                                            <i class="fa fa-fw fa-bookmark"></i> Bookmarks
-                                        </a>
-                                        <a href="#" class="list-group-item">
-                                            <i class="fa fa-fw fa-bell"></i> Notifications
-                                        </a>
-                                    </div>
+                                    <ul class="list-group alt">
+                                        <li class="list-group-item">
+                                            <div class="media">
+                                                <span class="pull-left thumb-sm"><img src="${base}/template/home/images/m3.jpg" alt="..." class="img-circle"></span>
+                                                <div class="pull-right text-success m-t-sm">
+                                                    <span class="badge bg-info">65</span>
+                                                </div>
+                                                <div class="media-body">
+                                                    <div><a href="${base}/v1/member/music/category/deatail.xhtml">一生有你</a></div>
+                                                    <small class="text-muted">这是头最喜欢的歌单</small>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <div class="media">
+                                                <span class="pull-left thumb-sm"><img src="${base}/template/home/images/m7.jpg" alt="..." class="img-circle"></span>
+                                                <div class="pull-right text-muted m-t-sm">
+                                                    <i class="fa fa-circle"></i>
+                                                </div>
+                                                <div class="media-body">
+                                                    <div><a href="${base}/v1/member/music/category/deatail.xhtml">欧美金曲</a></div>
+                                                    <small class="text-muted">学习英语的好音乐学习英语的好音乐学习英语的好音乐学习英语的好音乐学习英语的好音乐学习英语的好音乐</small>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <div class="media">
+                                                <span class="pull-left thumb-sm"><img src="${base}/template/home/images/a3.png" alt="..." class="img-circle"></span>
+                                                <div class="pull-right text-warning m-t-sm">
+                                                    <i class="fa fa-circle"></i>
+                                                </div>
+                                                <div class="media-body">
+                                                    <div><a href="#">Dan Doorack</a></div>
+                                                    <small class="text-muted">3 days ago</small>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <div class="media">
+                                                <span class="pull-left thumb-sm"><img src="${base}/template/home/images/a4.png" alt="..." class="img-circle"></span>
+                                                <div class="pull-right text-danger m-t-sm">
+                                                    <i class="fa fa-circle"></i>
+                                                </div>
+                                                <div class="media-body">
+                                                    <div><a href="#">Lauren Taylor</a></div>
+                                                    <small class="text-muted">about 2 minutes ago</small>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
                                 </section>
                                 <section class="panel panel-default portlet-item">
                                     <header class="panel-heading">
@@ -103,12 +133,12 @@
                             <div class="col-sm-6 portlet">
                                 <section class="panel panel-success portlet-item">
                                     <header class="panel-heading">
-                                        Connection
+                                        我喜欢
                                     </header>
                                     <ul class="list-group alt">
                                         <li class="list-group-item">
                                             <div class="media">
-                                                <span class="pull-left thumb-sm"><img src="images/a1.png" alt="..." class="img-circle"></span>
+                                                <span class="pull-left thumb-sm"><img src="${base}/template/home/images/m3.jpg" alt="..." class="img-circle"></span>
                                                 <div class="pull-right text-success m-t-sm">
                                                     <i class="fa fa-circle"></i>
                                                 </div>
@@ -120,7 +150,7 @@
                                         </li>
                                         <li class="list-group-item">
                                             <div class="media">
-                                                <span class="pull-left thumb-sm"><img src="images/a2.png" alt="..." class="img-circle"></span>
+                                                <span class="pull-left thumb-sm"><img src="${base}/template/home/images/m7.jpg" alt="..." class="img-circle"></span>
                                                 <div class="pull-right text-muted m-t-sm">
                                                     <i class="fa fa-circle"></i>
                                                 </div>
@@ -132,7 +162,7 @@
                                         </li>
                                         <li class="list-group-item">
                                             <div class="media">
-                                                <span class="pull-left thumb-sm"><img src="images/a3.png" alt="..." class="img-circle"></span>
+                                                <span class="pull-left thumb-sm"><img src="${base}/template/home/images/a3.png" alt="..." class="img-circle"></span>
                                                 <div class="pull-right text-warning m-t-sm">
                                                     <i class="fa fa-circle"></i>
                                                 </div>
@@ -144,7 +174,7 @@
                                         </li>
                                         <li class="list-group-item">
                                             <div class="media">
-                                                <span class="pull-left thumb-sm"><img src="images/a4.png" alt="..." class="img-circle"></span>
+                                                <span class="pull-left thumb-sm"><img src="${base}/template/home/images/a4.png" alt="..." class="img-circle"></span>
                                                 <div class="pull-right text-danger m-t-sm">
                                                     <i class="fa fa-circle"></i>
                                                 </div>
